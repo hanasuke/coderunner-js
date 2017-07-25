@@ -1,8 +1,44 @@
 <html>
   <head>
-    <title>hello docker with nodejs</title>
+    <meta charset="UTF-8">
+    <title>簡易オンラインジャッジシステム</title>
   </head>
   <body>
-    <h1>hello world!</h1>
+    <h1>コードをDockerコンテナで実行!</h1>
+    <!-- 入力フォームの作成 -->
+    <select id="language">
+      <option value="ruby">Ruby</option>
+      <option value="python">Python</option>
+      <option value="c">C</option>
+    </select>
+    <br>
+    ソースコード: <br>
+    <div id="source_code" style="width= 100%; height: 200px; border: 1px solid;"></div>
+    標準入力:<br>
+    <textarea name="" id="input" cols="30" rows="10" style="width: 100%; height: 50px; resize: vertical;"></textarea>
+    <button id="run_button" class="btn btn-primary">実行(Ctrl+Enter)</button>
+    <br>
+    <hr>
+
+    <!-- 出力結果の作成 -->
+    標準出力:
+    <pre>
+      <div id="stdout" style="background: lightgray"></div>
+    </pre>
+    標準エラー出力:
+    <pre>
+      <div id="stderr" style="background: lightgray"></div>
+    </pre>
+    実行時間:
+    <div id="time" style="background: lightgray"></div>
+    終了コード:
+    <div id="exit_code" style="background: lightgray"></div>
+
+    <!-- 以降JSライブラリの呼出し -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ext-language_tools.js"></script>
+    <script src="run.js"></script>
+    <script src="ui.js"></script>
   </body>
 </html>
