@@ -57,8 +57,8 @@ app.post('/api/run', function(req, res){
   // コンテナの起動
   dockerCmd = 'docker start -i ' + containerId
   console.log('Running: ' + dockerCmd);
-  var child = child_process.exec(dockerCmd, {}, function(error, stdout, stderr) {
-    dockerCmd = 'docker cp ' + containerId + ":/time.txt /tmp/time.txt";
+  var child = child_process.exec(dockerCmd, {}, function(err, stdout, stderr) {
+    dockerCmd = 'docker cp ' + containerId + ":/time.txt /tmp/";
     console.log("Running: " + dockerCmd);
     child_process.execSync(dockerCmd);
     var time = fs.readFileSync('/tmp/time.txt').toString();
@@ -72,7 +72,7 @@ app.post('/api/run', function(req, res){
     res.send({
       stdout: stdout,
       stderr: stderr,
-      exit_code: error && error.code || 0,
+      exit_code: err && err.code || 0,
       time: time
     });
   });
