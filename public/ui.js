@@ -9,14 +9,14 @@ aceEditor.setOptions({
 });
 
 // Ctrl+Enterでrun_buttonを押下判定
-$('run_button').on("click", function(event) {
+$('#run_button').on("click", function(event) {
   runCode();
 });
 
-// aceEditor.commands.addCommand({
-//   bindKey: {win: "Ctrl-Enter", mac: "Ctrl-Enter"},
-//   exec: runCode;
-// });
+aceEditor.commands.addCommand({
+  bindKey: {win: "Ctrl-Enter", mac: "Ctrl-Enter"},
+  exec: runCode,
+});
 
 // ace editorのシンタックスの設定
 function setEditorLanguage(language) {
